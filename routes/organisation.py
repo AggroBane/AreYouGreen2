@@ -8,4 +8,4 @@ def orgInfo(id):
 
     name = request.args.get('name')
 
-    return name
+    return render_template("organisation.html")
