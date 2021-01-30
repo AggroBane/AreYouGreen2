@@ -59,11 +59,11 @@ h1 {
 
 #tasks {
     min-width: 100px;
-    width: 30%;
+    width: 35%;
     display: flex;
 
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
 
     background-color: brown;
 }
@@ -71,8 +71,7 @@ h1 {
 #tasks > div {
     height: 50px;
     margin: 10px 5px 10px 5px;
-    padding-top: 13px;
-    padding-left: 4px;
+    padding-left: 5px;
 
     font-size: large;
     border-radius: 4px;
@@ -80,10 +79,71 @@ h1 {
     background-color: darkgoldenrod;
 }
 
-
 #tasks > div:hover {
     cursor: pointer;
 }
+
+#tasks > div > label {
+    position: absolute;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    padding-left: 8px;
+}
+
+#tasks > div > label:hover {
+    cursor: pointer;
+}
+
+/* Pretty checkbox */
+
+#tasks > div > input[type=checkbox] {
+    margin-top: 12px;
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    color: #363839;
+    border: 1px solid #bdc1c6;
+    border-radius: 4px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: 0;
+    cursor: pointer;
+    transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+    background-color: lightgray;
+}
+
+#tasks > div > input[type=checkbox]::before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 4px;
+    left: 8px;
+    width: 8px;
+    height: 14px;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+#tasks > div > input[type=checkbox]:checked {
+    color: #fff;
+    border-color: #06842c;
+    background: #06842c;
+}
+
+#tasks > div > input[type=checkbox]:checked::before {
+    opacity: 1;
+}
+
+#tasks > div > input[type=checkbox]:checked ~ label::before {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* --------------- */
 
 #details {
     width: 100%;
@@ -97,8 +157,10 @@ h1 {
 #chat {
     width: 30%;
     height: 30%;
-    min-width: 400px;
-    min-height: 400px;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 600px;
+    max-height: 600px;
 
     position: fixed;
     bottom: 10px;
@@ -107,6 +169,34 @@ h1 {
     border-radius: 5px;
 
     background-color: grey;
+}
+
+#chatHeader {
+    padding-bottom: 2px;
+    border-bottom: 2px solid black;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    background-color: maroon;
+}
+
+#chatTitle {
+    padding: 12px 50px 3px 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+#chatMinimize {
+    float: right;
+    font-size: xx-large;
+    padding-right: 10px;
+    padding-left: 16px;
+    padding-bottom: 6px;
+}
+
+#chatMinimize:hover {
+    cursor: pointer;
 }
 
 /* ////////////////////////////////////////////////
