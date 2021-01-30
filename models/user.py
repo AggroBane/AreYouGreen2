@@ -1,3 +1,3 @@
-class User(Document):
-    name = StringField(required=True, max_length=200)
-    content = StringField(required=True)
+# User ORM for SQLAlchemy 
+class User(db.Model): 
+    username = db.Column(db.String(50), nullable = False, primary_key = True)
