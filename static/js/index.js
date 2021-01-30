@@ -1,13 +1,21 @@
 $(document).ready(function()
 {
-    $('#log').append('<p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>');
-
     var socket = io();
 
-    $('#log').append('<p>Socket started</p>');
+    var username = $('#username').text();
+    var orgId = $('#orgId').text();
 
-    socket.on('my response', function(msg) 
+    // Try to join organisation (if he is in it)
+    socket.emit('joinOrganisation', orgId, username);
+
+    
+    socket.on('connection', function() 
     {
-        $('#log').append('<p>Received: ' + msg.data + '</p>');
+        $('#log').append("<p>Vous avez rejoint l'organisation</p>");
+    });
+
+    socket.on('newConnection', function(username) 
+    {
+        $('#log').append("<p>" + username + " a rejoint l'organisation</p>");
     });
 });
