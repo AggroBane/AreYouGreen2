@@ -1,11 +1,14 @@
 from flask import Flask
-from mongoengine import *
 from routes import *
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
-connect(host="mongodb+srv://tp3-prog-web:rqXafz9SIAzghRC0@tp3-prog-web.8hzbi.mongodb.net/tp3-prog-web?retryWrites=true&w=majority")
+@socketio.on('connect')
+def test_connect():
+    emit('my response', {'data': 'Connected'})
 
 if __name__ == '__main__':
     app.register_blueprint(routes)
-    app.run(debug=True)
+    socketio.run(app, debug=True)
