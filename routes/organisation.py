@@ -1,11 +1,8 @@
 from . import routes
 from flask import Flask, render_template, request
 
+@routes.route("/organisation/<orgId>")
+def orgInfo(orgId):
+    username = request.args.get('name')
 
-@routes.route("/organisation/<id>")
-
-def orgInfo(id):
-
-    name = request.args.get('name')
-
-    return name
+    return render_template('organisation.html', username=username, orgId=orgId)
