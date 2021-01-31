@@ -157,18 +157,21 @@ h1 {
 #chat {
     width: 30%;
     height: 30%;
-    min-width: 300px;
-    min-height: 300px;
+    bottom: 10px;
     max-width: 600px;
     max-height: 600px;
 
     position: fixed;
-    bottom: 10px;
     right: 10px;
 
     border-radius: 5px;
 
     background-color: grey;
+}
+
+.chatMinSize {
+    min-width: 200px;
+    min-height: 200px;
 }
 
 #chatHeader {
@@ -189,14 +192,18 @@ h1 {
 
 #chatMinimize {
     float: right;
-    font-size: xx-large;
+    font-size: larger;
     padding-right: 10px;
     padding-left: 16px;
-    padding-bottom: 6px;
+    padding-bottom: 2px;
 }
 
 #chatMinimize:hover {
     cursor: pointer;
+}
+
+#chatBody {
+    padding: 0px 8px 10px 8px;
 }
 
 /* ////////////////////////////////////////////////
