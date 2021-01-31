@@ -1,9 +1,32 @@
 h1 {
     color: red;
 }
+
 .centerBlock {
     display: table;
     margin: auto;
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 5px solid #E0D9D7;
+}
+
+#content {
+    min-height: 1000px;
+    background-image: url("/static/images/background.png");
+}
+
+#userspace {
+    display: flex;
+    align-items: center;
+}
+
+#userspace a {
+    margin-left: 25px;
 }
 
 .wrapper {

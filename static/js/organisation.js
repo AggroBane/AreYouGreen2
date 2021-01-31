@@ -98,7 +98,6 @@ socket.on('setCheckState', function(dicChange)
     taskId = dicChange["taskId"]
     checked = dicChange["checked"]
     
-    $('#log').append("<p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>")
     tempData[tabId][taskId][0] = checked;
 
     if(currentTab == tabId)
