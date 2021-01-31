@@ -17,7 +17,7 @@ app.config["SECRET_KEY"] = "yoursecretkey"
 app.config["SQLALCHEMY_DATABASE_URI"]= f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]= True
   
-db = SQLAlchemy(app) 
+db = SQLAlchemy(app)
 
 socketio = SocketIO(app)
 
@@ -31,8 +31,6 @@ def joinOrganisation(orgId, username):
 @socketio.on('checkedTask')
 def checkedTask(orgId, tabId, taskId, checked, username):
     emit('setCheckState', {"tabId": tabId, "taskId": taskId, "checked": checked, 'username': username}, room=orgId)
-
-
 
 
 if __name__ == '__main__':
