@@ -6,7 +6,10 @@
         <link rel="stylesheet" href="/static/css/style.css">
         <script>
             var tempData = '{{ tempData|tojson }}';
+            var username = '{{ user.username }}';
+            var orgId = '{{ org.name }}';
         </script>
+    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js"></script>
         <script src="/static/js/index.js" type="text/javascript"></script>
@@ -19,10 +22,6 @@
         {% include "header.html" %}
 
         <div id="content">
-            <br/>
-            <h1 id="username" class="hidden">{{ username }}</h1>
-            <h2 id="orgId" class="hidden">{{ orgId }}</h2>
-
             <div id="tabs"></div>
             <div id="current-department">
                 <div id="tasks"></div>
