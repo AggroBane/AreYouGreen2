@@ -12,7 +12,7 @@ $(document).ready(function()
     socket.emit('joinOrganisation', orgId, username);
 
     
-    socket.on('connection', function() 
+    /*socket.on('connection', function() 
     {
         $('#log').append("<p>Vous avez rejoint l'organisation</p>");
     });
@@ -20,5 +20,5 @@ $(document).ready(function()
     socket.on('newConnection', function(username) 
     {
         $('#log').append("<p>" + username + " a rejoint l'organisation</p>");
-    });
+    });*/
 });

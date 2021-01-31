@@ -15,7 +15,7 @@ $(document).ready(function()
             "task1-2": ["checked", "YESSSS"]
         },
 
-        "Tab Name 2": {
+        "tab2": {
             "task2-0": ["", "ewfjkmweopfimwefmwêffwqefwqef"],
             "test task": ["", "efwqpefm,we^qmfwoemfopmwef"],
             "task2-2": ["", "wefppw,e^fowqe,mfpwefmow"],
@@ -68,7 +68,15 @@ $(document).ready(function()
 });
 
 function loadTab(tabId) {
-    currentTab = tabId
+    if (currentTab != tabId)
+    {
+        $('#' + currentTab).removeClass("curTab");
+    }
+
+    currentTab = tabId;
+
+    $('#' + currentTab).addClass("curTab");
+
     tasks = document.getElementById("tasks");
     tasks.innerHTML = "";
 
@@ -107,22 +115,25 @@ function loadDetails(tabId, taskId) {
 }
 
 function changeCheckState(tabId, taskId, checked) {
-    socket.emit('checkedTask', orgId, tabId, taskId, checked)
+    socket.emit('checkedTask', orgId, tabId, taskId, checked, username)
 }
 
 
 socket.on('setCheckState', function(dicChange) 
 {
-    tabId = dicChange["tabId"]
-    taskId = dicChange["taskId"]
-    checked = dicChange["checked"]
+    tabId = dicChange["tabId"];
+    taskId = dicChange["taskId"];
+    checked = dicChange["checked"];
+    username = dicChange["username"];
     
     tempData[tabId][taskId][0] = checked;
 
     if(currentTab == tabId)
     {
-        loadTab(tabId)
+        loadTab(tabId);
     }
+
+    $('#chatBody').append('<p>' + username + ' a complété une tâche!</p>');
 });
 
 

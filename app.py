@@ -29,9 +29,8 @@ def joinOrganisation(orgId, username):
     emit('connection')
 
 @socketio.on('checkedTask')
-def checkedTask(orgId, tabId, taskId, checked):
-    print("Server: checkedTask")
-    emit('setCheckState', {"tabId": tabId, "taskId": taskId, "checked": checked}, room=orgId)
+def checkedTask(orgId, tabId, taskId, checked, username):
+    emit('setCheckState', {"tabId": tabId, "taskId": taskId, "checked": checked, 'username': username}, room=orgId)
 
 
 
