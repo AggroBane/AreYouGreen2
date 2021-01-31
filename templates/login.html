@@ -12,31 +12,30 @@
   </head>
   <div class="wrapper fadeInDown">
     <div id="formContent">
-      <!-- Tabs Titles -->
-  
-      <!-- Icon -->
-      <div class="fadeIn first">
-        <img src="../static/images/logo.png" id="icon" alt="User Icon" />
-      </div>
-      
       <body>
-          <h1>tst</h1>
+        <img src="../static/images/logo.png" width="50px" id="icon" alt="User Icon" /><h1>Login</h1>
       </body>
 
       <!-- Login Form -->
       <form>
         <div class="col-md-12">
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+            <input type="text" id="organisation" class="fadeIn second" name="organisation" placeholder="organisation">
         </div>
         <div class="col-md-12">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+            <input type="text" id="name" class="fadeIn third" name="name" placeholder="name">
         </div>
         <div class="col-md-12">
-            <input type="submit" class="fadeIn fourth" value="Log In">
+            <input type="button" id="btnSendLogin" class="fadeIn fourth" value="Log In">
+
+            <script>
+              document.getElementById("btnSendLogin").addEventListener("click", function() {
+                org = document.getElementById("organisation").value;
+                username = document.getElementById("name").value;
+                window.location.href = "/organisation/" + org + "/" + username;
+              });
+            </script>
         </div>
       </form>
-  
-  
     </div>
   </div>
 </html>

@@ -33,7 +33,7 @@ $(document).ready(function()
         else
         {
             chat.toggleClass("chatMinSize");
-            chat.animate({ "height": "40", "width": "155" }, 600, function() {
+            chat.animate({ "height": "40", "width": "170" }, 600, function() {
                 $("#chatMinimize").text('➕');
                 $('#chatBody').hide();
             });
