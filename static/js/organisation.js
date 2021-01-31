@@ -46,6 +46,25 @@ $(document).ready(function()
     });
 
     loadTab(Object.keys(tempData)[0]);
+
+    document.getElementById("chatMinimize").addEventListener("click", function() {
+        chat = $("#chat");
+
+        if (chat.height() < 100)
+        {
+            chat.animate({ "height": "30%", "width": "30%" }, 600, function() {
+                chat.toggleClass("chatMinSize");
+                $("#chatMinimize").text('➖');
+            });
+        }
+        else
+        {
+            chat.toggleClass("chatMinSize");
+            chat.animate({ "height": "40", "width": "155" }, 600, function() {
+                $("#chatMinimize").text('➕');
+            });
+        }
+    });
 });
 
 function loadTab(tabId) {
