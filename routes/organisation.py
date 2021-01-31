@@ -28,4 +28,6 @@ def orgIndex(orgId, usrname):
     if usr is None :
         return 'user doesnt exist in org'
 
-    return render_template('stats.html', username=usrname, orgId=orgId)
+    deps = Departments.query.join(Organisations, Departments.fk_orgName==Organisations.name).join(Tasks, Departments.id==Tasks.fk_department).all()
+
+    return render_template('organisationDbEnabled.html', user=usr, organisation=org, departments=deps)
