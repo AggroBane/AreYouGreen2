@@ -55,6 +55,7 @@ $(document).ready(function()
             chat.animate({ "height": "30%", "width": "30%" }, 600, function() {
                 chat.toggleClass("chatMinSize");
                 $("#chatMinimize").text('➖');
+                $('#chatBody').show();
             });
         }
         else
@@ -62,6 +63,7 @@ $(document).ready(function()
             chat.toggleClass("chatMinSize");
             chat.animate({ "height": "40", "width": "155" }, 600, function() {
                 $("#chatMinimize").text('➕');
+                $('#chatBody').hide();
             });
         }
     });
@@ -133,7 +135,10 @@ socket.on('setCheckState', function(dicChange)
         loadTab(tabId);
     }
 
-    $('#chatBody').append('<p>' + username + ' a complété une tâche!</p>');
+    if (checked == true)
+    {
+        $('#chatBody').append('<p>' + username + ' a complété une tâche!</p>');
+    }
 });
 
 

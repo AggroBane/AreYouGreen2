@@ -5,3 +5,8 @@ from flask import Flask, render_template, request
 def orgInfo(orgId):
     username = request.args.get('name')
     return render_template('organisation.html', username=username, orgId=orgId)
+
+@routes.route("/organisation/<orgId>/stats")
+def orgStats(orgId):
+    username = request.args.get('name')
+    return render_template('stats.html', username=username, orgId=orgId)
