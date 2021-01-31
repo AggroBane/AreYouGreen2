@@ -1,5 +1,7 @@
 $(document).ready(function()
 {
+    currentTab = 0
+
     tempData = {
         "tab0": {
             "tab 0 task 1": ["checked", "Somebody once told me the world is gonne roll me"],
@@ -66,6 +68,7 @@ $(document).ready(function()
 });
 
 function loadTab(tabId) {
+    currentTab = tabId
     tasks = document.getElementById("tasks");
     tasks.innerHTML = "";
 
@@ -104,5 +107,23 @@ function loadDetails(tabId, taskId) {
 }
 
 function changeCheckState(tabId, taskId, checked) {
-    tempData[tabId][taskId][0] = checked;
+    socket.emit('checkedTask', orgId, tabId, taskId, checked)
 }
+
+
+socket.on('setCheckState', function(dicChange) 
+{
+    tabId = dicChange["tabId"]
+    taskId = dicChange["taskId"]
+    checked = dicChange["checked"]
+    
+    $('#log').append("<p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>")
+    tempData[tabId][taskId][0] = checked;
+
+    if(currentTab == tabId)
+    {
+        loadTab(tabId)
+    }
+});
+
+
