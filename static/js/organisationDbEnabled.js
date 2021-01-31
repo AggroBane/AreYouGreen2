@@ -1,13 +1,16 @@
 $(document).ready(function()
 {
     currentTab = 0;
+    tempData = JSON.parse(tempData);
 
     Object.keys(tempData).forEach(tab => {
         var tabElem = document.createElement("div");
         tabElem.appendChild(document.createTextNode(tab));
         tabElem.id = tab;
-
+        
         document.getElementById("tabs").appendChild(tabElem);
+        
+        console.log(tab);
 
         tabElem.addEventListener("click", function() {
             loadTab(tab);

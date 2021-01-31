@@ -28,6 +28,15 @@ def orgIndex(orgId, usrname):
     if usr is None :
         return 'user doesnt exist in org'
 
-    deps = Departments.query.join(Organisations, Departments.fk_orgName==Organisations.name).join(Tasks, Departments.id==Tasks.fk_department).all()
+    tabs = Departments.query.join(Organisations, Departments.fk_orgName==Organisations.name).join(Tasks, Departments.id==Tasks.fk_department).all()
 
-    return render_template('organisationDbEnabled.html', user=usr, organisation=org, departments=deps)
+    tempData = {}
+
+    for tab in tabs:
+        tabTasks = Tasks.query.filter_by(fk_department=tab.id).all()
+        tempData[tab.name] = {}
+
+        for task in tabTasks:
+            tempData[tab.name][task.name] = [task.checked, task.description]
+
+    return render_template('organisationDbEnabled.html', user=usr, orgId=org, tempData=tempData)
